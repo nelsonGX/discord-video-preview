@@ -10,7 +10,7 @@ from generate import create_gif_preview
 load_dotenv()
 
 async def check_url(message_content):
-    url_regex = r"(?x)(?:https?:)?(?:\/\/)?(?:www\.)?(?:(?:youtube\.com\/(?:watch\?v=|embed\/|v\/)|youtu\.be\/)(?P<youtube_id>[\w-]{11})|(?:instagram\.com\/(?:reel|reels)\/(?P<instagram_id>[\w-]{11})))(?:[\/?&]\S*)?"
+    url_regex = r"(https?:\/\/(?:www\.)?(?:youtube\.com\/(?:watch\?v=|embed\/|v\/)|youtu\.be\/|instagram\.com\/reel\/)[\w-]{11}(?:\/?\?(?:igsh=[\w]{24}|[\w%&=]*))?(?:[\/?#]\S*)?)"
     url_match = re.search(url_regex, message_content)
     if url_match:
         url = url_match.group(1)
